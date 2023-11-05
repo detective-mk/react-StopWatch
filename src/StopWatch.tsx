@@ -6,19 +6,19 @@ function StopWatch() {
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef<number | undefined>();
 
-  function handleStart() {
+  function start() {
     setIsRunning(true);
     intervalRef.current = setInterval(() => {
       setTime((prevTime) => prevTime + 10);
     }, 10);
   }
 
-  function handlePause() {
+  function pause() {
     clearInterval(intervalRef.current);
     setIsRunning(false);
   }
 
-  function handleReset() {
+  function reset() {
     clearInterval(intervalRef.current);
     setIsRunning(false);
     setTime(0);
@@ -40,17 +40,17 @@ function StopWatch() {
       <ul className={styles.btnList}>
         <li className="btnItem">
           {isRunning ? (
-            <button type="button" className={styles.btn} onClick={handlePause}>
+            <button type="button" className={styles.btn} onClick={pause}>
               Pause
             </button>
           ) : (
-            <button type="button" className={styles.btn} onClick={handleStart}>
+            <button type="button" className={styles.btn} onClick={start}>
               Start
             </button>
           )}
         </li>
         <li className="btnItem">
-          <button type="button" className={styles.btn} onClick={handleReset}>
+          <button type="button" className={styles.btn} onClick={reset}>
             RESET
           </button>
         </li>
