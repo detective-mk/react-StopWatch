@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import styles from "./StopWatch.module.css";
 
 function StopWatch() {
   const [time, setTime] = useState(0);
@@ -30,25 +31,26 @@ function StopWatch() {
 
   return (
     <>
-      <h1>StopWatch</h1>
-      <div>
+      <h1 className={styles.hdg}>StopWatch</h1>
+
+      <div className={styles.timer}>
         {hours}:{minutes}:{seconds}:{milliseconds}
       </div>
 
-      <ul className="btnList">
+      <ul className={styles.btnList}>
         <li className="btnItem">
           {isRunning ? (
-            <button type="button" onClick={handlePause}>
+            <button type="button" className={styles.btn} onClick={handlePause}>
               Pause
             </button>
           ) : (
-            <button type="button" onClick={handleStart}>
+            <button type="button" className={styles.btn} onClick={handleStart}>
               Start
             </button>
           )}
         </li>
         <li className="btnItem">
-          <button type="button" className="btn" onClick={handleReset}>
+          <button type="button" className={styles.btn} onClick={handleReset}>
             RESET
           </button>
         </li>
